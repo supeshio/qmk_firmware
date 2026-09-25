@@ -15,6 +15,11 @@
         "cols": ["GP0", "GP1", "GP2", "GP3", "GP4", "GP5"],
         "rows": ["GP6", "GP7", "GP8"]
     },
+    "host": {
+        "default": {
+            "nkro": true
+        }
+    },
     "url": "https://github.com/supeshio/qmk_firmware",
     "usb": {
         "device_version": "1.0.0",
@@ -88,7 +93,7 @@
             "twinkle": true
         },
         "sleep": true,
-        "max_brightness": 255,
+        "max_brightness": 16,
         "split": true,
         "split_count": [4, 4]
     },
