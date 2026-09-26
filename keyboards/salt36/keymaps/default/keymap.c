@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // AZ1UBALL
 void pointing_device_init_kb(void) {
-    uint8_t addr=(0x0a << 1 );// ic2 address with 1bit shift up 
+    uint8_t addr=(0x0a << 1 );// ic2 address with 1bit shift up
     //uint8_t data[]={0x90, 0x00};// AZ1UBALL normal speed mode
     uint8_t data[]={0x91, 0x00};      // AZ1UBALL accellaration mode
     uint16_t timeout=100;         // in milli-seconds
@@ -97,31 +97,24 @@ void pointing_device_init_kb(void) {
         return;
     }
 }
-void set_layer_rgb(layer_state_t state) {
-    int layer = get_highest_layer(state);
+void set_layer_rgb(void) {
+    int layer = get_highest_layer(layer_state);
 
     for (int i = 0; i < 3; i++) {
-        if (((layer) >> i) & 1) {
-            rgblight_setrgb_at(0, 0, 4, i);
-        } else 
-            rgblight_setrgb_at(0, 2, 3, i); 
-        
-    }
-    for (int i = 0; i < 3; i++) {
-        if (((layer ) >> i) & 1) {
-            rgblight_setrgb_at(0, 0, 4, i+4);
-        } else 
-            rgblight_setrgb_at(0, 2, 3, i+4); 
-        
+        if ((layer >> i) & 1) {
+            rgblight_setrgb_at(0, 0, 255, i);
+        } else {
+            rgblight_setrgb_at(255, 255, 255, i);
+        }
     }
 }
 layer_state_t layer_state_set_user(layer_state_t state) {
-    set_layer_rgb(state);
+    set_layer_rgb();
     return state;
 }
 void keyboard_post_init_user(void) {
     rgblight_enable();
-    rgblight_setrgb(3, 1,4);
+    rgblight_setrgb(50, 50, 50);
     //rgblight_setrgb_at(0, 0, 255, 4);
     //rgblight_setrgb_at(0, 255, 255, 5);
     //rgblight_setrgb_at(255, 0, 255, 6);
