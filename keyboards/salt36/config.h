@@ -21,8 +21,15 @@
 
 /* AZ1UBALL settings */
 #define PIMORONI_TRACKBALL_SCALE 8    // default 5
+
 #define I2C1_SDA_PIN GP14
 #define I2C1_SCL_PIN GP15
+
+
+// split serial
+#define SERIAL_USART_TX_PIN GP10
+#define SERIAL_USART_RX_PIN GP11
+
 
 //#define NKRO_FORCE
 #define DYNAMIC_KEYMAP_LAYER_COUNT 8

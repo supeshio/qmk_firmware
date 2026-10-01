@@ -93,7 +93,7 @@
             "twinkle": true
         },
         "sleep": true,
-        "max_brightness": 16,
+        "max_brightness": 2,
         "split": true,
         "split_count": [4, 4]
     },
@@ -102,10 +102,6 @@
     },
     "split": {
         "enabled": true,
-        "serial": {
-            "driver": "vendor",
-            "pin": "GP11"
-        },
         "matrix_pins": {
             "right": {
                 "cols": ["GP0", "GP1", "GP2", "GP3", "GP4", "GP5"],

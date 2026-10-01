@@ -84,6 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     
 };
+
 // AZ1UBALL
 void pointing_device_init_kb(void) {
     uint8_t addr=(0x0a << 1 );// ic2 address with 1bit shift up
@@ -97,24 +98,30 @@ void pointing_device_init_kb(void) {
         return;
     }
 }
-void set_layer_rgb(void) {
-    int layer = get_highest_layer(layer_state);
-
+    
+void set_layer_rgb(layer_state_t state) {
+    int layer = get_highest_layer(state);
+    rgblight_setrgb(4, 4, 4);
     for (int i = 0; i < 3; i++) {
         if ((layer >> i) & 1) {
-            rgblight_setrgb_at(0, 0, 255, i);
+            rgblight_setrgb_at(0, 0, 4, i);
         } else {
-            rgblight_setrgb_at(255, 255, 255, i);
+            rgblight_setrgb_at(4, 4, 4, i);
         }
     }
 }
 layer_state_t layer_state_set_user(layer_state_t state) {
-    set_layer_rgb();
+    set_layer_rgb(state);
     return state;
 }
 void keyboard_post_init_user(void) {
+    rgblight_setrgb(4, 4, 4);
     rgblight_enable();
-    rgblight_setrgb(50, 50, 50);
+    rgblight_setrgb(4, 4, 4);
+    rgblight_setrgb(4, 4, 4);
+    rgblight_setrgb(4, 4, 4);
+    rgblight_setrgb(4, 4, 4);
+    rgblight_setrgb(4, 4, 4);
     //rgblight_setrgb_at(0, 0, 255, 4);
     //rgblight_setrgb_at(0, 255, 255, 5);
     //rgblight_setrgb_at(255, 0, 255, 6);
